@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div class="col border rounded-2 mx-2 p-3">
+            <h4>User Form</h4>
+            <form #userForm="ngForm" class="d-flex flex-column gap-3">
+                <div>
+                    <label class="form-label" for="name">Name: </label>
+                    <input class="form-control" name="username" type="text" [(ngModel)]="user.username" #username="ngModel" minlength="3" maxlength="8" required>
+                    <div *ngIf="username.invalid && username.touched && !username.errors?.['minlength']" class="text-danger">Please Enter valid name</div>
+                    <div *ngIf="username.errors?.['minlength']" class="text-danger">Please enter atleast 3 charactor in your username</div>
+                </div>
+                <div>
+                    <label class="form-label" for="number">Contact no.: </label>
+                    <input type="text" class="form-control" name="contact" [(ngModel)]="user.contact" #contact="ngModel" pattern="[0-9]{10}" required maxlength="10">
+                    <div class="text-danger" *ngIf="contact.invalid && contact.touched">Please enter valid contact no.</div>
+                </div>
+                <div>
+                    <button class="btn btn-primary" type="submit" [disabled]="userForm.invalid">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="col border rounded-2 mx-2 p-3">
+            <pre>
+                {{user|json}}
+            </pre>
+        </div>
+    </div>
+</div>

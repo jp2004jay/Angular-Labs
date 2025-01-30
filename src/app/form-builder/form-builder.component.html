@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="row">
+        <div class="col mx-2 border rounded-2">
+            <form [formGroup]="userForm">
+                <div class="mt-2">
+                    <label class="form-label" for="name">Username: </label>
+                    <input class="form-control" type="text" formControlName="userName">
+                    <span class="text-danger"
+                        *ngIf="userForm.get('userName')?.invalid && userForm.get('userName')?.touched">Please Enter
+                        Username</span>
+                </div>
+                <div class="mt-2">
+                    <label class="form-label" for="name">Email: </label>
+                    <input class="form-control" type="text" formControlName="email">
+                    <span class="text-danger" *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched">
+                        <span *ngIf="userForm.get('email')?.errors?.['required']">Please Enter Email</span>
+                        <span *ngIf="userForm.get('email')?.errors?.['email']">Please Enter Valid Email</span>
+                    </span>
+                </div>
+                <div class="mt-2">
+                    <label class="form-label" for="name">Password: </label>
+                    <input class="form-control" type="text" formControlName="password">
+                    <span class="text-danger"
+                        *ngIf="userForm.get('password')?.invalid && userForm.get('password')?.touched">
+                        <span *ngIf="userForm.get('password')?.errors?.['required']">Please enter password</span>
+                        <span *ngIf="userForm.get('password')?.errors?.['minlength']">Please enter atleast 3
+                            charactor</span>
+                    </span>
+                </div>
+                <div class="mt-2">
+                    <label class="form-label" for="name">Contact: </label>
+                    <input class="form-control" type="text" formControlName="contact">
+                    <span class="text-danger"
+                        *ngIf="userForm.get('contact')?.invalid && userForm.get('contact')?.touched">
+                        <span *ngIf="userForm.get('contact')?.errors?.['required']">Please enter contact no.</span>
+                        <span *ngIf="userForm.get('contact')?.errors?.['pattern']">Please enter valid contact no.</span>
+                    </span>
+                </div>
+                
+                <div formArrayName="addresses">
+                    <div class="form-control mt-2 position-relative" *ngFor="let address of addresses.controls; let i = index" [formGroupName]="i">
+                        <button class="btn btn-danger position-absolute end-0 top-0 px-1 py-0" (click)="removeAddress(i)">Remove</button>
+                        <div class="mt-2">
+                            <label class="form-label" for="name">Address line 1: </label>
+                            <input class="form-control" type="text" formControlName="line1">
+                        </div>
+                        <div class="mt-2">
+                            <label class="form-label" for="name">Address line 2: </label>
+                            <input class="form-control" type="text" formControlName="line2">
+                        </div>
+                        <div class="mt-2">
+                            <label class="form-label" for="name">City: </label>
+                            <select class="form-control" formControlName="city">
+                                <option value="">-- Select City</option>
+                                <option value="Rajkot">Rajkot</option>
+                                <option value="Surat">Surat</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-2">
+                    <button (click)="addAddress()" class="btn btn-info">Add Address</button>
+                </div>
+                <div>
+                    <button class="btn btn-primary my-4" [disabled]="userForm.invalid">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="col mx-2 border rounded-2">
+            <pre>
+{{userForm.value | json}}
+            </pre>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+.side-bar{
+    width: 15%; 
+    height: 92.8vh;
+	overflow-y: auto;
+    background-color: var(--primary);
+    border-bottom: 1px solid var(--light);
+}
+.side-bar a{
+    font-size: 14px;
+    color: var(--secondary);
+    font-weight: 600;
+    border: 1px solid var(--light);
+    border-top: none;
+}
+.active-link{
+    background-color: var(--secondary-20);
+}
+.main-content{
+    width: 85%; 
+    margin-left: auto;
+    padding: 1rem;
+    max-height: 92.8vh;
+	overflow-y: auto;
+}

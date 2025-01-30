@@ -1,0 +1,134 @@
+<div class="container">
+    <div class="row d-flex justify-content-evenly my-2">
+        <div class="col-5 border rounded-top-2 px-3 py-2">
+            <div class="fs-6 mx-auto fw-bolder text-success" style="width: fit-content;">
+                ngIf
+            </div>
+            <div class="my-2 fs-2" *ngIf="isVisible else elseblock">
+                Content is visible!
+            </div>
+            <ng-template #elseblock>
+                <div class="my-2 fs-2">
+                    Content is not visible!
+                </div>
+            </ng-template>
+            <button class="btn btn-info" (click)="toggleVisibility()">Toggle Visibility</button>
+        </div>
+        <div class="col-5 border rounded-2 px-3 py-2">
+            <div class="fs-6 mx-auto fw-bolder text-success" style="width: fit-content;">
+                ngSwitch
+            </div>
+            <div class="my-2 fs-2" [ngSwitch]="day">
+                <div *ngSwitchCase="'Sunday'">It's Sunday!</div>
+                <div *ngSwitchCase="'Monday'">It's Monday!</div>
+                <div *ngSwitchCase="'Tuesday'">It's Tuesday!</div>
+                <div *ngSwitchCase="'Wednesday'">It's Wednesday!</div>
+                <div *ngSwitchCase="'Thrusday'">It's Thrusday!</div>
+                <div *ngSwitchCase="'Friday'">It's Friday!</div>
+                <div *ngSwitchCase="'Saturday'">It's Saturday!</div>
+                <div *ngSwitchDefault>It's nothing!</div>
+            </div>
+            <div class="form-control">
+                <label class="form-label" for="day">Select Day of the week:</label>
+                <select class="form-control" [(ngModel)]="day">
+                    <option value="Sunday">Sunday</option>
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thrusday">Thrusday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-evenly my-2">
+        <div [ngStyle]="bgColor" class="col-5 border rounded-2 px-3 py-2">
+            <div class="fs-6 mx-auto fw-bolder text-success" style="width: fit-content;">
+                ngStyle
+            </div>
+            <div class="fw-semibold my-2" [ngStyle]="{ 'color': isHighlighted ? 'yellow' : 'red' }">
+                This text changes color dynamically!
+            </div>
+            <div class="d-flex gap-3">
+                <button class="btn btn-info" (click)="toggleStyle()">Toggle Style</button>
+                <button class="btn btn-info" (click)="start()">Start</button>
+                <button class="btn btn-info" (click)="stop()">Stop</button>
+            </div>
+        </div>
+        <div class="col-5 border rounded-2 px-3 py-2">
+            <div class="fs-6 mx-auto fw-bolder text-success" style="width: fit-content;">
+                ngClass
+            </div>
+            <div class="fw-semibold my-2" [ngClass]="{'active-style':isActive, 'deactive-style':!isActive}">
+                This text changes style dynamically!
+            </div>
+            <button class="btn btn-info" (click)="toggleClass()">Toggle Class</button>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-evenly my-2">
+        <div class="col-5 border rounded-2 px-3 py-2">
+            <div class="fs-6 mx-auto fw-bolder text-black" style="width: fit-content;">
+                Electicity Bill Application
+            </div>
+            <div class="fw-semibold" [ngStyle]="{ 'color': billAmount < 1000 ? 'green' : 'red' }">
+                Electricity Bill: ₹{{ billAmount }}
+            </div>
+            <div class="form-control my-2">
+                <label class="form-label" for="english">Enter units of bill:</label>
+                <input class="form-control" (input)="calculateBill()" type="number" [(ngModel)]="unitOfBill">
+            </div>
+            <div class="form-control my-2">
+                <label class="form-label" for="english">Per unit price</label>
+                <input class="form-control" disabled="" type="number" [(ngModel)]="perUnitPrice">
+            </div>
+
+        </div>
+        <div class="col-5 border rounded-2 px-3 py-2">
+            <div class="fs-6 mx-auto fw-bolder text-black" style="width: fit-content;">
+                Grade Calculator
+            </div>
+            <div>
+                <p>Your Grade:
+                    <span class="fw-semibold" [ngClass]="getGradeClass()">{{ getGrade() }}</span>
+                </p>
+            </div>
+            <div class="form-control my-2">
+                <label class="form-label" for="english">Enter marks in English</label>
+                <input class="form-control" (input)="getTotal()" type="number" [(ngModel)]="english">
+            </div>
+            <div class="form-control my-2">
+                <label class="form-label" for="english">Enter marks in Maths</label>
+                <input class="form-control" (input)="getTotal()" type="number" [(ngModel)]="maths">
+            </div>
+            <div class="form-control my-2">
+                <label class="form-label" for="english">Enter marks in Science</label>
+                <input class="form-control" (input)="getTotal()" type="number" [(ngModel)]="science">
+            </div>
+            <div class="form-control my-2">
+                <label class="form-label" for="total">Average: </label>
+                <input class="form-control" disabled type="number" [(ngModel)]="marks" placeholder="Average Marks">
+            </div>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-evenly my-2">
+        <div class="col-10 px-3 py-2 border rounded-2">
+            <div class="col-12 text-center">
+                <span class="fs-6 mx-auto fw-bolder text-black" style="width: fit-content;">
+                    Progressbar
+                </span>
+            </div>
+            <div class="col-12 d-flex justify-content-center align-items-center gap-3">
+                <div class="progress-container">
+                    <div class="progress-bar" [style.width]="progress + '%'" [ngClass]="{'complete': progress === 100}">
+                    </div>
+                    <span class="progress-text">{{ progress }}%</span>
+                </div>
+                <button class="btn btn-warning" (click)="chaluKaro()" [disabled]="isUploading">
+                    {{ isUploading ? 'Uploading...' : 'Start Upload' }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

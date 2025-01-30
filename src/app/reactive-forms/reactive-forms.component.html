@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row">
+        <div class="col mx-2 border rounded-2">
+            <form [formGroup]="userForm">
+                <div class="mt-2">
+                    <label class="form-label" for="name">Username: </label>
+                    <input class="form-control" type="text" formControlName="userName">
+                    <span class="text-danger" *ngIf="userForm.get('userName')?.invalid && userForm.get('userName')?.touched">Please Enter Username</span>
+                </div>
+                <div class="mt-2">
+                    <label class="form-label" for="name">Email: </label>
+                    <input class="form-control" type="text" formControlName="email">
+                    <span class="text-danger" *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched">
+                        <span *ngIf="userForm.get('email')?.errors?.['required']">Please Enter Email</span>
+                        <span *ngIf="userForm.get('email')?.errors?.['email']">Please Enter Valid Email</span>
+                    </span>
+                </div>
+                <div class="mt-2">
+                    <label class="form-label" for="name">Password: </label>
+                    <input class="form-control" type="text" formControlName="password">
+                    <span class="text-danger" *ngIf="userForm.get('password')?.invalid && userForm.get('password')?.touched">
+                        <span *ngIf="userForm.get('password')?.errors?.['required']">Please enter password</span>
+                        <span *ngIf="userForm.get('password')?.errors?.['minlength']">Please enter atleast 3 charactor</span>
+                    </span>
+                </div>
+                <div class="mt-2">
+                    <label class="form-label" for="name">Contact: </label>
+                    <input class="form-control" type="text" formControlName="contact">
+                    <span class="text-danger" *ngIf="userForm.get('contact')?.invalid && userForm.get('contact')?.touched">
+                        <span *ngIf="userForm.get('contact')?.errors?.['required']">Please enter contact no.</span>
+                        <span *ngIf="userForm.get('contact')?.errors?.['pattern']">Please enter valid contact no.</span>
+                    </span>
+                </div>
+                <div>
+                    <button class="btn btn-primary my-4" [disabled]="userForm.invalid">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="col mx-2 border rounded-2">
+            <pre>
+{{userForm.value | json}}
+            </pre>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<app-nav-bar project_data="Angular TA 2024-25 (Even Term) in 4th Sem Practicle Programs"/>
+<div class="d-flex">
+    <div class="side-bar position-fixed d-flex flex-column">
+        <a *ngFor="let item of sidebarItems" [routerLink]="item.path" routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{exact:true}" class="text-center py-1 text-decoration-none">
+            {{item.itemName}}
+        </a>
+    </div>
+    <div class="main-content">
+        <router-outlet />
+    </div>
+</div>

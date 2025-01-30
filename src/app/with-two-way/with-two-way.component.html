@@ -1,0 +1,93 @@
+<div id="main">
+    <div>
+        <div id="live-form">
+            <h2>With two way data binding </h2>
+            <div>
+                <label for="name">Name: </label>
+                <input [(ngModel)]="student.name" type="text" name="name" #name="ngModel" required>
+                <div *ngIf="name.invalid && name.touched" class="error">Name is required.</div>
+            </div>
+            <div>
+                <label for="contact">Contact No.: </label>
+                <input [(ngModel)]="student.contact" type="text" name="contact" #contact="ngModel" pattern="^[0-9]{10}$" required>
+                <div *ngIf="contact.invalid && contact.touched" class="error">Contact number must be 10 digits.</div>
+            </div>
+            <div>
+                <label for="email">Email ID: </label>
+                <input [(ngModel)]="student.email" type="email" name="email" #email="ngModel" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$">
+                <div *ngIf="email.invalid && email.touched" class="error">Enter a valid email address.</div>
+            </div>
+            <div>
+                <label for="spi">SPI: </label>
+                <input [(ngModel)]="student.spi" type="number" name="spi" #spi="ngModel" min="0" max="10" step="0.1" required>
+                <div *ngIf="spi.invalid && spi.touched" class="error">Enter valid spi</div>
+            </div>
+            <div>
+                <label for="password">Password: </label>
+                <input type="text" required [(ngModel)]="student.password" (input)="validatePassword()">
+                <ul>
+                    <li [ngClass]="{'green-color':passwordCriteria.hasUpperLower, 'red-color':!passwordCriteria.hasUpperLower}">Password has atleast one A (Capital Letter) and one a (Small Letter)</li>
+                    <li [ngClass]="{'green-color':passwordCriteria.minLength, 'red-color':!passwordCriteria.minLength}">Password have atleast 8 charactor</li>
+                    <li [ngClass]="{'green-color':passwordCriteria.hasSpecialChar, 'red-color':!passwordCriteria.hasSpecialChar}">Password has atlest one special letter</li>
+                    <li [ngClass]="{'green-color':passwordCriteria.hasNumber, 'red-color':!passwordCriteria.hasNumber}">Password has atlease one number</li>
+                </ul>
+            </div>
+            <div>
+                <label for="dob">Date of Birth: </label>
+                <input [(ngModel)]="student.dob" type="date" name="dob" required>
+            </div>
+            <div>
+                <label for="gender">Gender: </label>
+                <div>
+                    <label>
+                        <input [(ngModel)]="student.gender" type="radio" name="gender" value="Male">Male
+                    </label>
+                    <label>
+                        <input [(ngModel)]="student.gender" type="radio" name="gender" value="Female">Female
+                    </label>
+                </div>
+            </div>
+            <div>
+                <label for="hobbies">Hobbies: </label>
+                <div>
+                    <label>
+                        <input [(ngModel)]="student.hobbies[0]" type="checkbox" name="hobbies">Cricket
+                    </label>
+                    <label>
+                        <input [(ngModel)]="student.hobbies[1]" type="checkbox" name="hobbies">Swimming
+                    </label>
+                    <label>
+                        <input [(ngModel)]="student.hobbies[2]" type="checkbox" name="hobbies">Dancing
+                    </label>
+                </div>
+            </div>
+            <div>
+                <label for="address">Address: </label>
+                <textarea [(ngModel)]="student.address" name="address"></textarea>
+            </div>
+        </div>
+
+        <form id="project-form" style="margin-top: 1rem;" (ngSubmit)="saveProject()" #projectForm="ngForm">
+            <h2>Add Project</h2>
+            <div>
+                <label for="projname">Project Name: </label>
+                <input [(ngModel)]="tempProject.projname" type="text" name="projname" required>
+            </div>
+            <div>
+                <label for="projdesc">Short Description: </label>
+                <input [(ngModel)]="tempProject.projdesc" type="text" name="projdesc" required>
+            </div>
+            <div>
+                <label for="projduration">Project Duration: </label>
+                <input [(ngModel)]="tempProject.projduration" type="date" name="projduration">
+            </div>
+            <div>
+                <button type="submit">Add</button>
+            </div>
+        </form>
+    </div>
+    <div id="stu-data">
+        <h4>Student Data</h4>
+        <pre class="json-output">{{student | json}}</pre>
+    </div>
+</div>

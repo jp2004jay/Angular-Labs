@@ -1,0 +1,38 @@
+<div class="container w-50 mx-auto">
+    <div class="row my-3">
+        <div class="col text-center">
+            <h3>
+                Array of Object CRUD
+            </h3>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-5">
+            <label for="name" class="form-label">First Name</label>
+            <input type="text" class="form-control" [(ngModel)]="tempName.firstName">
+        </div>
+        <div class="col-5">
+            <label for="name" class="form-label">Last Name</label>
+            <input type="text" class="form-control" [(ngModel)]="tempName.lastName">
+        </div>
+        <div class="col mt-auto mb-2">
+            <button class="btn btn-info py-0" (click)="addName()">Add</button>
+        </div>
+        <div class="col">
+            <label for="name" class="form-label">Search</label>
+            <input type="text" class="form-control" (input)="searchName()" [(ngModel)]="searchText">
+        </div>
+    </div>
+    <div class="row my-2" *ngFor="let name of names; let i = index">
+        <div class="col">
+            <div class="form-control d-flex justify-content-between">
+                {{name.firstName}}
+                {{name.lastName}}
+                <div>
+                    <button class="btn btn-success py-0 mx-1" (click)="editName(i)">Edit</button>
+                    <button class="btn btn-danger py-0 mx-1" (click)="deleteName(i)">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

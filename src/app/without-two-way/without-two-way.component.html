@@ -1,0 +1,46 @@
+<div id="main">
+  <div>
+    <form id="live-form">
+      <h2>With out two way</h2>
+      <div>
+        <label for="name">Name: </label>
+        <input (input)="dataFill($event)" type="text" name="name">
+      </div>
+      <div>
+        <label for="contact">Contact no.: </label>
+        <input (input)="dataFill($event)" type="text" name="contact">
+      </div>
+      <div>
+        <label for="spi">Email ID: </label>
+        <input (input)="dataFill($event)" type="text" name="email">
+      </div>
+      <div>
+        <label for="spi">SPI: </label>
+        <input (input)="dataFill($event)" type="text" name="spi">
+      </div>
+    </form>
+    <form id="live-form" style="margin-top: 1rem;" (submit)="onSubmit($event)">
+      <div>
+        <label for="projname">Project Name: </label>
+        <input type="text" (input)="projectFill($event)" name="projname" [value]="project.projname">
+      </div>
+      <div>
+        <label for="projdesc">Short Description: </label>
+        <input type="text" (input)="projectFill($event)" name="projdesc" [value]="project.projdesc">
+      </div>
+      <div>
+        <label for="projduration">Project Duration: </label>
+        <input type="date" (input)="projectFill($event)" name="projduration" [value]="project.projduration">
+      </div>
+      <div>
+        <button type="submit">Add</button>
+      </div>
+    </form>
+  </div>
+  <div id="stu-data">
+    <h4>Student Data</h4>
+    <pre class="json-output">
+      {{blank|json}}
+      </pre>
+  </div>
+</div>

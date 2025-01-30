@@ -1,0 +1,15 @@
+<h4>Filter by Status</h4>
+<button class="btn btn-info border px-2 mx-1" (click)="filterTasks('all')">All</button>
+<button class="btn btn-info border px-2 mx-1" (click)="filterTasks('completed')">Completed</button>
+<button class="btn btn-info border px-2 mx-1" (click)="filterTasks('in-progress')">In-Progress</button>
+<button class="btn btn-info border px-2 mx-1" (click)="filterTasks('pending')">Pending</button>
+
+<div *ngFor="let task of tasks" class="task-card">
+    <h3>{{ task.title }}</h3>
+    <p>{{ task.description }}</p>
+    <p [ngClass]="getStatusClass(task.status)">Status: {{ task.status }}</p>
+    <button class="btn btn-success p-0 px-2 mx-1" (click)="updateStatus(task, 'completed')">Mark as Completed</button>
+    <button class="btn btn-warning p-0 px-2 mx-1" (click)="updateStatus(task, 'in-progress')">Mark as In-Progress</button>
+    <button class="btn btn-danger p-0 px-2 mx-1" (click)="updateStatus(task, 'pending')">Mark as Pending</button>
+</div>
+  
