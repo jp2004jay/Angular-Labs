@@ -1,5 +1,5 @@
 import { JsonPipe, NgFor, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
@@ -11,7 +11,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Va
 })
 export class FormBuilderComponent {
 
-  constructor(private fb: FormBuilder) { }
+  fb = inject(FormBuilder)
 
   createAddress(): FormGroup {
     return this.fb.group({
@@ -21,7 +21,7 @@ export class FormBuilderComponent {
     })
   }
 
-  userForm = this.fb.group({
+  userForm:FormGroup = this.fb.group({
     userName: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(3)]],
@@ -29,16 +29,28 @@ export class FormBuilderComponent {
     addresses: this.fb.array([this.createAddress()])
   })
 
-
   get addresses(): FormArray {
     return this.userForm.get('addresses') as FormArray;
   }
 
   addAddress(){
-    this.userForm.controls.addresses.push(this.createAddress())
+    this.addresses.push(this.createAddress())
   }
 
   removeAddress(id:number){
-    this.userForm.controls.addresses.removeAt(id)
+    this.addresses.removeAt(id)
+  }
+
+  addAdminIdControl(){
+    this.userForm.addControl('adminId', this.fb.control('', [Validators.required]));
+  }
+
+  removeAdminIdControl(){
+    this.userForm.removeControl('adminId')
+  }
+
+  submitData(){
+    alert("Data Submitting...")
+    this.userForm.reset()
   }
 }
