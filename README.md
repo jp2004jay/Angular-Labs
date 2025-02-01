@@ -17,7 +17,7 @@ This repository contains various Angular lab tasks designed to understand fundam
 1. **Clone the Repository**
    ```sh
    git clone https://github.com/jp2004jay/Angular-Labs.git
-   cd angular-lab-tasks
+   cd Angular-Labs
    ```
 2. **Install Dependencies**
    ```sh
