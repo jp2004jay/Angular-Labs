@@ -21,7 +21,9 @@ export class AppComponent {
     { path: '/task-manager', itemName: 'Task Manager Using ngClass'},
     { path: '/validation-form', itemName: 'Validation'},
     { path: '/reactive-forms', itemName: 'Reactive Form'},
-    { path: '/form-builder', itemName: 'Form Builder'}
+    { path: '/form-builder', itemName: 'Form Builder'},
+    { path: '/auth/login', itemName: 'Login'},
+    { path: '/auth/sign-up', itemName: 'Register'}
   ]
 
 }

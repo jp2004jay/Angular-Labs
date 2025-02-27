@@ -8,6 +8,9 @@ import { DirectivesComponent } from './directives/directives.component';
 import { FormValidationComponent } from './form-validation/form-validation.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 import { FormBuilderComponent } from './form-builder/form-builder.component';
+import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 export const routes: Routes = [
     {path: '', component:WithoutTwoWayComponent},
@@ -18,5 +21,11 @@ export const routes: Routes = [
     {path: 'task-manager', component:TaskManagerComponent},
     {path: 'validation-form', component:FormValidationComponent},
     {path: 'reactive-forms', component:ReactiveFormsComponent},
-    {path: 'form-builder', component:FormBuilderComponent}
+    {path: 'form-builder', component:FormBuilderComponent},
+    {path: 'auth', component:AuthLayoutComponent, 
+        children:[
+            {path:'login', component:LoginComponent},
+            {path:'sign-up', component:RegisterComponent}
+        ]
+    }
 ];
