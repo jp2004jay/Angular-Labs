@@ -13,6 +13,7 @@ This repository contains various Angular lab tasks designed to understand fundam
 - **Reactive Forms with `FormGroup` and `FormControl`**
 - **Reactive Forms using `FormBuilder` with `FormArray`**
 - **Login & Sign-up Using Local Storage**
+- **CRUD Operation With Moke API**
 
 ## How to Use
 1. **Clone the Repository**
