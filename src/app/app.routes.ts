@@ -11,6 +11,9 @@ import { FormBuilderComponent } from './form-builder/form-builder.component';
 import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { ApiCrudComponent } from './api-crud/api-crud.component';
+import { ApiCrudViewmoreComponent } from './api-crud-viewmore/api-crud-viewmore.component';
+import { ApiCrudAddEditFormComponent } from './api-crud-add-edit-form/api-crud-add-edit-form.component';
 
 export const routes: Routes = [
     {path: '', component:WithoutTwoWayComponent},
@@ -27,5 +30,9 @@ export const routes: Routes = [
             {path:'login', component:LoginComponent},
             {path:'sign-up', component:RegisterComponent}
         ]
-    }
+    },
+    {path: 'api-crud/add-edit', component:ApiCrudAddEditFormComponent},
+    {path: 'api-crud/add-edit/:id', component:ApiCrudAddEditFormComponent},
+    {path: 'api-crud', component:ApiCrudComponent},
+    {path: 'api-crud/:id', component:ApiCrudViewmoreComponent}
 ];

@@ -16,14 +16,15 @@ export class AppComponent {
     { path: '/', itemName: 'Resume Without Two Way' },
     { path: '/with-two-way', itemName: 'Resume With Two Way' },
     { path: '/array-crud', itemName: 'Array Crud' },
-    { path: '/array-of-object-crud', itemName: 'Array of Object CRUD'},
-    { path: '/directives', itemName: 'Directives'},
-    { path: '/task-manager', itemName: 'Task Manager Using ngClass'},
-    { path: '/validation-form', itemName: 'Validation'},
-    { path: '/reactive-forms', itemName: 'Reactive Form'},
-    { path: '/form-builder', itemName: 'Form Builder'},
-    { path: '/auth/login', itemName: 'Login'},
-    { path: '/auth/sign-up', itemName: 'Register'}
+    { path: '/array-of-object-crud', itemName: 'Array of Object CRUD' },
+    { path: '/directives', itemName: 'Directives' },
+    { path: '/task-manager', itemName: 'Task Manager Using ngClass' },
+    { path: '/validation-form', itemName: 'Validation' },
+    { path: '/reactive-forms', itemName: 'Reactive Form' },
+    { path: '/form-builder', itemName: 'Form Builder' },
+    { path: '/auth/login', itemName: 'Login' },
+    { path: '/auth/sign-up', itemName: 'Register' },
+    { path: '/api-crud', itemName: 'API Crud' }
   ]
 
 }

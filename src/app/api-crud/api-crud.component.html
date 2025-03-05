@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row my-2">
+        <div class="col-3 mx-auto">
+            <button class="btn btn-info" routerLink="/api-crud/add-edit">Add New Student</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card col-3 m-2" style="width: 400px;" *ngFor="let tempStudent of students">
+            <img class="card-img-top" [src]="tempStudent.avatar" alt="Card image" style="width:100%">
+            <div class="card-body">
+                <h4 class="card-title">{{tempStudent.name}}</h4>
+                <p class="card-text">{{tempStudent.description}}</p>
+                <a routerLink="/api-crud/{{tempStudent.id}}" class="btn btn-primary">See Profile</a>
+            </div>
+        </div>
+    </div>
+</div>
