@@ -12,6 +12,7 @@ This repository contains various Angular lab tasks designed to understand fundam
 - **Basic Form Validations**
 - **Reactive Forms with `FormGroup` and `FormControl`**
 - **Reactive Forms using `FormBuilder` with `FormArray`**
+- **Login & Sign-up Using Local Storage**
 
 ## How to Use
 1. **Clone the Repository**
